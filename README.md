@@ -4,9 +4,9 @@ Stworzyliśmy odpowiednią hierarchię zwierząt. Jako kierownicy zoo będziemy 
 
 Niestety nie udało się nam otrzymać dofinansowania od UE na nowy startup, więc na razie w naszym zoo będą się znajdowały tylko niedźwiedzie (Bear). Na początek będą się tam znajdowały niedźwiedzie czarne (BlackBear), niedźwiedzie brunatne (BrownBear) i niedźwiedzie polarne (PolarBear).
 
-Nasze niedźwiedzie to nietypowe zwierzęta. Żeby sprawdzić czy żyją (isAlive) należy przypomnieć sobie ostatnią datę ich posiłku. Jeśli zwierzę jadło mniej niż 10 dni temu, to jest żywe. Warto tutaj pomyśleć o JodaTime.
+Nasze niedźwiedzie to nietypowe zwierzęta. Żeby sprawdzić czy żyją (isAlive) należy sprawdzić czy ich aktualna waga nie jest mniejsza niż ich waga urodzeniowa. Jeśli zwierzę waży mniej niż jego waga urodzeniowa, to jest nieżywe.
 
-Aby utrzymywać nasze niedźwiedzie przy życiu powinniśmy żywić nasze zwierzaki. Każdy niedźwiedź powinien mieć możliwość jedzenia (eat). Wystarczy, by metoda ustawiała czas posiłku na obecną datę. Zjedzenie powinno ożywiać niedźwiedzia oraz wydłużać jego obecny czas życia.
+Aby utrzymywać nasze niedźwiedzie przy życiu powinniśmy żywić nasze zwierzaki. Każdy niedźwiedź powinien mieć możliwość jedzenia (eat). Wystarczy, by metoda odpowiednio zwiększała wagę misia. Zjedzenie powinno ożywiać niedźwiedzia.
 
 
 **Importowanie kodu do IntelliJ**
