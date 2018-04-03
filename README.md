@@ -8,16 +8,10 @@ Nasze niedźwiedzie to nietypowe zwierzęta. Żeby sprawdzić czy żyją (isAliv
 
 Aby utrzymywać nasze niedźwiedzie przy życiu powinniśmy żywić nasze zwierzaki. Każdy niedźwiedź powinien mieć możliwość jedzenia (eat). Wystarczy, by metoda ustawiała czas posiłku na obecną datę. Zjedzenie powinno ożywiać niedźwiedzia oraz wydłużać jego obecny czas życia.
 
-**Pobieranie kodu**
-
-Należy założyć konto na GitHub oraz utworzyć fork repozytorium. 
-https://help.github.com/articles/fork-a-repo/ 
-
-Następnie repozytorium sklonujemy przy pomocy IntelliJ.
 
 **Importowanie kodu do IntelliJ**
 
-Wybieracie opcję New -> Project From Version Control -> GitHub. Logujecie się na swoje konto i wybieracie javalub4-zoo. Jeśli SDK nie jest ustawione (pliki dziwnie się wyświetlają w drzewie projektu), wybieracie Java 1.8. 
+Wybieracie opcję New -> Project From Version Control -> Git. Wklejacie link z Bitbucketa. Jeśli SDK nie jest ustawione (pliki dziwnie się wyświetlają w drzewie projektu), wybieracie Java 1.8. 
 Na dolnej belce powinna pojawić się informacja Non-managed pom.xml file found. Klikając na to wyświetli się okienko z wiadomością 
 
 Non-managed pom.xml file found: /home/krystian/code/sda/javalub-zoo/pom.xml 
