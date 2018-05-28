@@ -35,11 +35,12 @@ Niedźwiedź może przybierać lub tracić na wadzę.
 1. Po zjedzeniu posiłku o danej masie, jego waga wzrasta o tę samą wartość. 
 2. Po wypiciu wody (void drink(double waterWeight)) o danej masie, jego waga wzrasta o 3/4 tej wartości.
 3. Po zrobieniu kupy (void poop()) masa misia spada o 5%.
-4. Niedźwiedź żyje wtedy i tylko wtedy jeśli jego waga jest powyżej jego masy urodzeniowej.
-5. Niedźwiedź może zostać ożywiony po zjedzeniu posiłku. 
+4. Niedźwiedź żyje wtedy i tylko wtedy jeśli jego waga jest nie mniejsza niż jego masa urodzeniowa.
+5. Niedźwiedź może zostać ożywiony po zjedzeniu posiłku lub wypiciu wody. 
 
 Niedźwiedzie zapadają w sen zimowy. 
 
 6. Niedźwiedzie czarne śpią (boolean isHibernating) od 20 listopada do 15 marca.
 7. Niedźwiedzie polarna śpią od 5 maja do 10 października.
 8. Karmienie lub pojenie misia w trakcie snu zimowego powinno wyrzucać wyjątek BearHibernatingException.
+
