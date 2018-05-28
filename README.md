@@ -44,3 +44,8 @@ Niedźwiedzie zapadają w sen zimowy.
 7. Niedźwiedzie polarna śpią od 5 maja do 10 października.
 8. Karmienie lub pojenie misia w trakcie snu zimowego powinno wyrzucać wyjątek BearHibernatingException.
 
+Praca domowa
+
+1. Niedźwiedzie brunatne śpią od 1 grudnia do 20 kwietnia. 
+2. Zmiana wymagań: niedźwiedzie nie mogą być ożywiane. Jeśli raz umrą, to już pozostają martwe (piąte wymaganie nie jest już prawdziwe).
+3. Zmiana wymagań: niedźwiedzie mogą zostać obudzone ze snu zimowego. Jeśli miś śpi, to nakarmienie go powoduje jego obudzenie (tzn. isHibernating() zwraca false). Miś pozostaje obudzony na jeden dzień. Tzn. następnego dnia metoda isHibernate() powinna znów zwrócić true (o ile data przypada w okresie jego zimowania).
