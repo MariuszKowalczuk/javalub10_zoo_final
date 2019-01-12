@@ -1,7 +1,7 @@
 package pl.sdacademy.animals.bear;
 
 public class PolarBear extends Bear {
-    public PolarBear(int weight) {
+    public PolarBear(double weight) {
         super(weight);
     }
 }
