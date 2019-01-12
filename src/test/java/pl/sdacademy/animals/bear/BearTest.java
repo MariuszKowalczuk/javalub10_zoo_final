@@ -25,4 +25,17 @@ public class BearTest {
 
         Assertions.assertTrue(result);
     }
+    @Test
+    public void bearShouldPutOnWeightIfItHasEeatenFood(){
+        int weight = 3;
+        Bear bear = new BlackBear(weight);
+        int  foodWeight = 2;
+        bear.eat(foodWeight);
+
+        int result = weight + foodWeight;
+
+        Assertions.assertEquals(result, bear.getWeight());
+    }
+
+
 }

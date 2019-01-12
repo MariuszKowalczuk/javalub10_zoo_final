@@ -21,6 +21,9 @@ public abstract class Bear implements Animal {
     public void eat() {
         isAlive = true;
     }
+    public void eat(int foodWeight){
+        this.weight = this.weight + foodWeight;
+    }
 
     @Override
     public int getWeight() {
