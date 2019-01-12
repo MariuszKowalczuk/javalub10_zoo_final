@@ -5,20 +5,20 @@ import pl.sdacademy.animals.Animal;
 
 public abstract class Bear implements Animal {
 
-    private double weight;
+    private double BirthWeight;
     private boolean isAlive;
     private double currentWeight;
 
-    public Bear(double weight) {
-        this.weight = weight;
+    public Bear(double BirthWeight) {
+        this.BirthWeight = BirthWeight;
         this.isAlive = false;
-        this.currentWeight  = this.weight;
+        this.currentWeight  = this.BirthWeight;
     }
 
     @Override
     public boolean isAlive() {
 
-        return isAlive = getCurrentWeight() >= getWeight();
+        return isAlive = getCurrentWeight() >= getBirthWeight();
         //return isAlive;
 
     }
@@ -34,12 +34,12 @@ public abstract class Bear implements Animal {
     }
 
     public void poop(){
-        this.currentWeight -= this.currentWeight*0.05;
+        this.currentWeight *= 0.95;
     }
 
     @Override
-    public double getWeight() {
-        return weight;
+    public double getBirthWeight() {
+        return BirthWeight;
     }
 
     public double getCurrentWeight() {

@@ -2,8 +2,6 @@ package pl.sdacademy.animals.bear;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class BearTest {
 
@@ -76,7 +74,7 @@ public class BearTest {
         double bearWeight = 23;
         Bear bear = new BlackBear(bearWeight);
 
-        Assertions.assertEquals(bear.getCurrentWeight() >= bear.getWeight(), bear.isAlive());
+        Assertions.assertEquals(bear.getCurrentWeight() >= bear.getBirthWeight(), bear.isAlive());
 
     }
 
@@ -98,7 +96,6 @@ public class BearTest {
     public void bearShouldBeResurrectedIfIthasEatenAfterDeath() {
         double bearWeight = 6;
         Bear bear = new BlackBear(bearWeight);
-
         bear.poop();
         Assertions.assertFalse(bear.isAlive());
 

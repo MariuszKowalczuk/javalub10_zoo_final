@@ -32,8 +32,8 @@ class BearSpec extends Specification {
 
 //    def "Bear should not be alive if it has eaten within more than 10 days"() {
 //        given:
-//        int weight = 3
-//        Bear bear = new BlackBear(weight)
+//        int BirthWeight = 3
+//        Bear bear = new BlackBear(BirthWeight)
 //
 //        when:
 //        boolean result = bear.isAlive()
@@ -80,8 +80,7 @@ class BearSpec extends Specification {
         bear.poop()
 
         then:
-
-        bearWeight-bearWeight*0.05==bear.getCurrentWeight()
+        bearWeight*0.95==bear.getCurrentWeight()
     }
 
     def "Bear should be alive if his current is greater or equal than his birth weight"(){
@@ -110,7 +109,7 @@ class BearSpec extends Specification {
         boolean result = bear.isAlive()
 
         then:
-        result==bear.getCurrentWeight()>=bear.getWeight()
+        result==bear.getCurrentWeight()>=bear.getBirthWeight()
 
     }
 
