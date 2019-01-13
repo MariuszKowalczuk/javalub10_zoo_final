@@ -104,6 +104,7 @@ public class BearTest {
         Assertions.assertTrue(bear.isAlive());
 
     }
+
     @Test
     public void bearShouldBeResurrectedIfIthasDrinkedAfterDeath() {
         double birthWeight = 6;
@@ -114,6 +115,25 @@ public class BearTest {
         bear.drink(7);
 
         Assertions.assertTrue(bear.isAlive());
+
+    }
+
+    @Test
+    public void bearShuldNotBeResurrectedIfThhasntEatenEnough() {
+        double birthWeight = 6;
+        Bear bear = new BlackBear(birthWeight);
+        bear.poop();
+        bear.poop();
+        bear.poop();
+        Assertions.assertFalse(bear.isAlive()); //tutaj upewniamy się, że miś nie żyje
+
+        bear.drink(1);
+
+        Assertions.assertFalse(bear.isAlive());
+    }
+
+    @Test
+    public void blackBearShouldBeHibernatingBetween20thNovemberAnd15March(){
 
     }
 
