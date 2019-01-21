@@ -72,4 +72,60 @@ class BearSpec extends Specification {
         6     | 8   | false
     }
 
+    def "Brown bear should be hibernating only between 1st of december and 20th od April"() {
+        given:
+        int bearWeight = 5
+        TestingClock testingClock = new TestingClock()
+        testingClock.setDateOfClock(LocalDate.now().withMonth(month).withDayOfMonth(day))
+        Bear bear = new BrownBear(bearWeight, testingClock)
+
+        when:
+        boolean result = bear.isHibernating()
+
+        then:
+
+        expected == result
+
+        where:
+
+        month | day | expected
+        11    | 30  | false
+        11    | 29  | false
+        12    | 01  | true
+        12    | 02  | true
+        04    | 21  | false
+        04    | 20  | true
+        04    | 19  | true
+        07    | 20  | false // nie działa ale dlaczego?
+        02    | 12  | true
+
+    }
+
+    def "Polar bear should be hibernating between 5th of may to 10th of October"() {
+        given:
+        double bearWeight = 3
+        TestingClock testingClock = new TestingClock()
+        testingClock.setDateOfClock(LocalDate.now().withMonth(month).withDayOfMonth(day))
+        Bear bear = new PolarBear(bearWeight, testingClock)
+
+        when:
+        boolean result = bear.isHibernating()
+
+        then:
+        expected == result
+
+        where:
+        day | month | expected
+        02  | 03    | false
+        04  | 05    | false
+        05  | 05    | true
+        06  | 05    | true
+        07  | 10    | true
+        10  | 10    | true
+        11  | 10    | false
+        12  | 12    | false
+
+
+    }
+
 }

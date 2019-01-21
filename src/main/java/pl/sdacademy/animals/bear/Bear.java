@@ -11,7 +11,7 @@ public abstract class Bear implements Animal {
     private boolean isAlive;
     protected Clock clock;
 
-    public Bear(int weight) {
+    public Bear(double weight) {
         this.weight = weight;
         this.isAlive = false;
         this.clock = new DateTimeClock();
@@ -28,24 +28,35 @@ public abstract class Bear implements Animal {
         return isAlive;
     }
 
-    public void eat(int weight) {
+    public void eat(int weight){
+        try {
+            if (isHibernating()){
+                throw new BearHibernatingException();
+            }
+        }
+        catch (BearHibernatingException e){
+            e.printStackTrace();
+        }
+
+
         this.weight += weight;
         isAlive = true;
     }
 
-    @Override
-    public double getWeight() {
-        return weight;
-    }
+        @Override
+        public double getWeight () {
+            return weight;
+        }
 
-    public void drink(double waterWeight) {
-        this.weight += 0.75*waterWeight;
-    }
+        public void drink ( double waterWeight){
+            this.weight += 0.75 * waterWeight;
+        }
 
-    public void poop() {
-        this.weight *= 0.95;
-    }
+        public void poop () {
+            this.weight *= 0.95;
+        }
 
-    abstract boolean isHibernating();
+        abstract boolean isHibernating ();
+
 
 }
