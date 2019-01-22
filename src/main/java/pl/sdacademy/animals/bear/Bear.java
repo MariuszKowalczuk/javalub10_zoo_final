@@ -29,14 +29,11 @@ public abstract class Bear implements Animal {
     }
 
     public void eat(int weight){
-        try {
+
             if (isHibernating()){
                 throw new BearHibernatingException();
             }
-        }
-        catch (BearHibernatingException e){
-            e.printStackTrace();
-        }
+
 
 
         this.weight += weight;
@@ -49,6 +46,9 @@ public abstract class Bear implements Animal {
         }
 
         public void drink ( double waterWeight){
+            if (isHibernating()){
+                throw new BearHibernatingException();
+            }
             this.weight += 0.75 * waterWeight;
         }
 

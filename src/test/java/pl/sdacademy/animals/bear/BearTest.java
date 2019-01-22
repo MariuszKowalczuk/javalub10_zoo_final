@@ -20,10 +20,12 @@ public class BearTest {
     }
 
     @Test
-    public void bearShouldBeAliveIfItHasEatenWithin10Days()  {
-        int weight = 3;
+    public void bearShouldBeAliveIfItHasEatenWithin10DaysWhenItsNotHibernating()  {
+        double weight = 3;
         int mealWeight = 4;
-        Bear bear = new BlackBear(weight);
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(weight, testingClock);
         bear.eat(mealWeight);
 
         boolean result = bear.isAlive();
@@ -35,7 +37,10 @@ public class BearTest {
     public void bearsWeightShouldIncreaseByMealsWeight() {
         int bearWeight = 3;
         int mealWeight = 4;
-        Bear bear = new BlackBear(bearWeight);
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(bearWeight, testingClock);
+
 
         bear.eat(mealWeight);
 
@@ -46,10 +51,12 @@ public class BearTest {
     }
 
     @Test
-    public void bearsWeightShouldIncreaseBy75PercentOfWaterHeDrinks() {
+    public void bearsWeightShouldIncreaseBy75PercentOfWaterHeDrinksWhenItsNotHibernating() {
         int bearWeight = 3;
         int waterWeight = 3;
-        Bear bear = new BlackBear(bearWeight);
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(bearWeight, testingClock);
 
         bear.drink(waterWeight);
 

@@ -19,10 +19,13 @@ class BearSpec extends Specification {
         !result
     }
 
-    def "Bear should be alive if it has eaten within 10 days"() {
+    def "Bear should be alive if it has eaten within 10 days when it's not hibernating"() {
         given:
         int weight = 3
-        Bear bear = new BlackBear(weight)
+        TestingClock testingClock = new TestingClock()
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20))
+
+        Bear bear = new BlackBear(weight, testingClock)
         bear.eat(2)
 
         when:
@@ -32,11 +35,13 @@ class BearSpec extends Specification {
         result
     }
 
-    def "Bear's weight should increase by 75% of weight of water he drinks"() {
+    def "Bear's weight should increase by 75% of weight of water he drinks if it's not hibernating"() {
         given:
         int weight = 3
         double waterWeight = 2
-        Bear bear = new BlackBear(weight)
+        TestingClock testingClock = new TestingClock()
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20))
+        Bear bear = new BlackBear(weight, testingClock)
 
         when:
         bear.drink(waterWeight)
