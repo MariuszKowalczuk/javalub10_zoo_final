@@ -20,7 +20,7 @@ public class BearTest {
     }
 
     @Test
-    public void bearShouldBeAliveIfItHasEatenWithin10DaysWhenItsNotHibernating()  {
+    public void bearShouldBeAliveIfItHasEatenWithin10DaysWhenItsNotHibernating() {
         double weight = 3;
         int mealWeight = 4;
         TestingClock testingClock = new TestingClock();
@@ -69,7 +69,7 @@ public class BearTest {
     @Test
     public void bearsWeightShouldDecreaseBy5PercentWhenHePoops() {
         int bearWeight = 3;
-       Bear bear = new BlackBear(bearWeight);
+        Bear bear = new BlackBear(bearWeight);
 
         bear.poop();
 
@@ -85,12 +85,13 @@ public class BearTest {
         int bearWeight = 3;
         TestingClock clock = new TestingClock();
         clock.setDateOfClock(LocalDate.now().withMonth(11).withDayOfMonth(20));
-        Bear bear = new BlackBear(bearWeight,clock);
+        Bear bear = new BlackBear(bearWeight, clock);
 
         Assertions.assertTrue(bear.isHibernating());
     }
+
     @Test
-    public void brownBearShuldBeHibernatingBetween1stDecemberAnd20thApril(){
+    public void brownBearShuldBeHibernatingBetween1stDecemberAnd20thApril() {
         double bearWeight = 3;
         TestingClock clock = new TestingClock();
         Bear bear = new BrownBear(bearWeight, clock);
@@ -98,8 +99,9 @@ public class BearTest {
 
         Assertions.assertTrue(bear.isHibernating());
     }
+
     @Test
-    public void polarBearShuldBeHibernatingBetween5thMayAnd10thOctober(){
+    public void polarBearShuldBeHibernatingBetween5thMayAnd10thOctober() {
         double bearWeight = 3;
         TestingClock clock = new TestingClock();
         clock.setDateOfClock(LocalDate.now().withMonth(6).withDayOfMonth(20));
@@ -109,14 +111,27 @@ public class BearTest {
     }
 
     @Test
-    public void whenBearIsHibernatingEatingShouldThrowBearHibernatingException(){
+    public void whenBearIsHibernatingEatingShouldThrowBearHibernatingException() {
         int bearWeight = 3;
         TestingClock clock = new TestingClock();
         clock.setDateOfClock(LocalDate.now().withMonth(11).withDayOfMonth(20));
-        Bear bear = new BlackBear(bearWeight,clock);
+        Bear bear = new BlackBear(bearWeight, clock);
         assert bear.isHibernating();
 
-        Assertions.assertThrows(BearHibernatingException.class, ()->bear.eat(7));
+        Assertions.assertThrows(BearHibernatingException.class, () -> bear.eat(7));
 
     }
+    @Test
+    public void whenBearIsDeadEatingShouldntMakeHimAlive(){
+        int bearWeight = 3;
+        TestingClock clock = new TestingClock();
+        clock.setDateOfClock(LocalDate.now().withMonth(5).withDayOfMonth(5));
+        Bear bear = new BlackBear(bearWeight, clock);
+        bear.poop();
+
+
+
+
+    }
+
 }

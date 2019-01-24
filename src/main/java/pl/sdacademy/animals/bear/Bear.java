@@ -56,7 +56,7 @@ public abstract class Bear implements Animal {
             this.weight *= 0.95;
         }
 
-        abstract boolean isHibernating ();
+        abstract boolean isHibernating();
 
 
 }
