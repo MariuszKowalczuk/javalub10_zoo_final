@@ -7,26 +7,44 @@ import pl.sdacademy.animals.time.DateTimeClock;
 
 public abstract class Bear implements Animal {
 
-    private double weight;
+
+        
+
+    private double BirthWeight;
+    private double currentWeight;
     private boolean isAlive;
     protected Clock clock;
 
-    public Bear(double weight) {
-        this.weight = weight;
+    public Bear(double ) {
+        this.BirthWeight = BirthWeight;
+        this.isAlive = false;
+        this.currentWeight  = this.BirthWeight;
         this.isAlive = false;
         this.clock = new DateTimeClock();
     }
 
-    public Bear(double weight, Clock clock) {
-        this.weight = weight;
+    public Bear(double BirthWeight, Clock clock) {
+        this.BirthWeight = BirthWeight;
         this.isAlive = false;
+        this.currentWeight  = this.BirthWeight;
+        this.isAlive = false;        
         this.clock = clock;
+
     }
 
     @Override
     public boolean isAlive() {
-        return isAlive;
+
+        return isAlive = getCurrentWeight() >= getBirthWeight();
+        //return isAlive;
+
     }
+
+
+
+ 
+
+    
 
     public void eat(int weight){
 
@@ -36,27 +54,30 @@ public abstract class Bear implements Animal {
 
 
 
-        this.weight += weight;
+        this.currentWeight += weight;
         isAlive = true;
     }
 
         @Override
-        public double getWeight () {
-            return weight;
-        }
+    public double getBirthWeight() {
+        return BirthWeight;
+    }
 
         public void drink ( double waterWeight){
             if (isHibernating()){
                 throw new BearHibernatingException();
             }
-            this.weight += 0.75 * waterWeight;
+            this.currentWeight += 0.75 * waterWeight;
         }
 
         public void poop () {
-            this.weight *= 0.95;
+            this.currentWeight *= 0.95;
         }
 
         abstract boolean isHibernating();
 
 
+    public double getCurrentWeight() {
+        return currentWeight;
+    }
 }

@@ -5,7 +5,7 @@ import pl.sdacademy.animals.time.Clock;
 import java.time.LocalDate;
 
 public class BlackBear extends Bear {
-    public BlackBear(int weight) {
+    public BlackBear(double weight) {
         super(weight);
     }
 
