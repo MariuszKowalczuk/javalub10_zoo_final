@@ -7,10 +7,12 @@ import java.time.LocalDate
 
 class BearSpec extends Specification {
 
-    def "Bear should not be alive immediately after creation"() {
+    def "Bear should be alive immediately after creation"() {
         given:
         double weight = 3
-        Bear bear = new BlackBear(weight)
+        TestingClock testingClock = new TestingClock()
+        testingClock.setDateOfClock(LocalDate.now().withMonth(5).withDayOfMonth(5))
+        Bear bear = new BlackBear(weight, testingClock)
 
         when:
         boolean result = bear.isAlive()
@@ -25,7 +27,6 @@ class BearSpec extends Specification {
         int weight = 3
         TestingClock testingClock = new TestingClock()
         testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20))
-
         Bear bear = new BlackBear(weight, testingClock)
         bear.eat(2)
 
@@ -40,11 +41,11 @@ class BearSpec extends Specification {
 
 //    def "Bear should not be alive if it has eaten within more than 10 days"() {
 //        given:
-//        int BirthWeight = 3
-//        Bear bear = new BlackBear(BirthWeight)
+//        int birthWeight = 3
+//        Bear bear = new BlackBear(birthWeight)
 //
 //        when:
-//        boolean result = bear.isAlive()
+//        boolean result = bear.vitality()
 //
 //        then:
 //        result
@@ -54,8 +55,10 @@ class BearSpec extends Specification {
     def "Bear should put on weight of amont od eaten food"() {
         given:
         double weight = 3
-        double foodWeight = 2
-        Bear bear = new BlackBear(weight)
+        int foodWeight = 2
+        TestingClock testingClock = new TestingClock()
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20))
+        Bear bear = new BlackBear(weight, testingClock)
 
 
         when:
@@ -63,7 +66,7 @@ class BearSpec extends Specification {
 
         then:
         weight + foodWeight == bear.getCurrentWeight()
-
+    }
     def "Bear's weight should increase by 75% of weight of water he drinks if it's not hibernating"() {
         given:
         int weight = 3
@@ -76,7 +79,7 @@ class BearSpec extends Specification {
         bear.drink(waterWeight)
 
         then:
-        bear.getWeight() == weight + 0.75 * waterWeight
+        bear.getCurrentWeight() == weight + 0.75 * waterWeight
     }
 
     def "Black bear should be hibernating only between 20th November and 15th March"() {
@@ -167,7 +170,9 @@ class BearSpec extends Specification {
         given:
         double bearWeight = 3
         double waterWeight = 4
-        Bear bear = new BlackBear(bearWeight)
+        TestingClock testingClock = new TestingClock()
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20))
+        Bear bear = new BlackBear(bearWeight, testingClock)
 
         when:
         bear.drink(waterWeight)

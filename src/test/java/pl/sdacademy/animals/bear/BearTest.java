@@ -39,8 +39,10 @@ public class BearTest {
 
     public void bearShouldPutOnWeightOfAmountOfEeatenFood() {
         double weight = 3;
-        Bear bear = new BlackBear(weight);
-        double foodWeight = 2;
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(weight, testingClock);
+        int foodWeight = 2;
 
         bear.eat(foodWeight);
 
@@ -51,7 +53,9 @@ public class BearTest {
     public void bearsWeightShouldIncreaseOfAmountOfThreeFourthOfWaterWeight() {
         double bearWeight = 76;
         double waterWeight = 31;
-        Bear bear = new BlackBear(bearWeight);
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(bearWeight, testingClock);
 
         bear.drink(waterWeight);
 
@@ -59,10 +63,7 @@ public class BearTest {
     }
 
     @Test
-    public void bearsWeightShuldDecreaseOfAmountOf5PercentOfBear() {
-        double bearWeight = 34;
-
-    public void bearsWeightShouldIncreaseByMealsWeight() {
+        public void bearsWeightShouldIncreaseByMealsWeight() {
         int bearWeight = 3;
         int mealWeight = 4;
         TestingClock testingClock = new TestingClock();
@@ -74,7 +75,7 @@ public class BearTest {
 
         Assertions.assertEquals(
                 bearWeight + mealWeight,
-                bear.getWeight()
+                bear.getCurrentWeight()
         );
     }
 
@@ -90,13 +91,13 @@ public class BearTest {
 
         Assertions.assertEquals(
                 bearWeight + 0.75 * waterWeight,
-                bear.getWeight()
+                bear.getCurrentWeight()
         );
     }
 
     @Test
     public void bearsWeightShouldDecreaseBy5PercentWhenHePoops() {
-        int bearWeight = 3;
+        double bearWeight = 10;
 
         Bear bear = new BlackBear(bearWeight);
 
@@ -142,7 +143,9 @@ public class BearTest {
 
     public void bearShouldBeResurrectedIfIthasEatenAfterDeath() {
         double bearWeight = 6;
-        Bear bear = new BlackBear(bearWeight);
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(bearWeight, testingClock);
         bear.poop();
         Assertions.assertFalse(bear.isAlive());
 
@@ -155,9 +158,11 @@ public class BearTest {
     @Test
     public void bearShouldBeResurrectedIfIthasDrinkedAfterDeath() {
         double birthWeight = 6;
-        Bear bear = new BlackBear(birthWeight);
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(birthWeight, testingClock);
         bear.poop();
-        Assertions.assertFalse(bear.isAlive()); //tutaj upewiamy się, że miś nie żyje
+        Assertions.assertFalse(bear.isAlive());
 
         bear.drink(7);
 
@@ -168,30 +173,20 @@ public class BearTest {
     @Test
     public void bearShuldNotBeResurrectedIfThhasntEatenEnough() {
         double birthWeight = 6;
-        Bear bear = new BlackBear(birthWeight);
+        TestingClock testingClock = new TestingClock();
+        testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
+        Bear bear = new BlackBear(birthWeight, testingClock);
         bear.poop();
         bear.poop();
         bear.poop();
-        Assertions.assertFalse(bear.isAlive()); //tutaj upewniamy się, że miś nie żyje
+        Assertions.assertFalse(bear.isAlive());
 
         bear.drink(1);
 
         Assertions.assertFalse(bear.isAlive());
     }
 
-    @Test
-    public void blackBearShouldBeHibernatingBetween20thNovemberAnd15March(){
 
-    }
-
-
-
-        Assertions.assertEquals(
-                bearWeight * 0.95,
-                bear.getWeight(),
-                0.00001
-        );
-    }
 
     @Test
     public void blackBearShouldBeHibernatingBetween20thNovemberAnd15thMarch() {
@@ -241,6 +236,10 @@ public class BearTest {
         clock.setDateOfClock(LocalDate.now().withMonth(5).withDayOfMonth(5));
         Bear bear = new BlackBear(bearWeight, clock);
         bear.poop();
+
+        bear.eat(5);
+
+        Assertions.assertFalse(bear.isAlive());
 
 
 
