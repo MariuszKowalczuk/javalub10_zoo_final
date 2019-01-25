@@ -141,7 +141,7 @@ public class BearTest {
 
     @Test
 
-    public void bearShouldBeResurrectedIfIthasEatenAfterDeath() {
+    public void bearShouldntBeResurrectedIfIthasEatenAfterDeath() {
         double bearWeight = 6;
         TestingClock testingClock = new TestingClock();
         testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
@@ -151,12 +151,12 @@ public class BearTest {
 
         bear.eat(7);
 
-        Assertions.assertTrue(bear.isAlive());
+        Assertions.assertFalse(bear.isAlive());
 
     }
 
     @Test
-    public void bearShouldBeResurrectedIfIthasDrinkedAfterDeath() {
+    public void bearShouldntBeResurrectedIfIthasDrinkedAfterDeath() {
         double birthWeight = 6;
         TestingClock testingClock = new TestingClock();
         testingClock.setDateOfClock(LocalDate.now().withMonth(8).withDayOfMonth(20));
@@ -166,7 +166,7 @@ public class BearTest {
 
         bear.drink(7);
 
-        Assertions.assertTrue(bear.isAlive());
+        Assertions.assertFalse(bear.isAlive());
 
     }
 

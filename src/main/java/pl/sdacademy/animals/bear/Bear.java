@@ -19,13 +19,15 @@ public abstract class Bear implements Animal {
         this.currentWeight = this.birthWeight;
         this.clock = new DateTimeClock();
     }
-//konstruktor z dependency injection, do testów
+
+    //konstruktor z dependency injection, do testów
     public Bear(double BirthWeight, Clock clock) {
         this.birthWeight = BirthWeight;
         this.vitality = true;
         this.currentWeight = this.birthWeight;
         this.clock = clock;
     }
+
     @Override
     public boolean isAlive() {
         return vitality = getCurrentWeight() >= getBirthWeight();
@@ -35,22 +37,26 @@ public abstract class Bear implements Animal {
         if (isHibernating()) {
             throw new BearHibernatingException();
         }
-        this.currentWeight += weight;
-        vitality = true;
-    }
+        if (isAlive()) {
+            this.currentWeight += weight;
+        }
 
+    }
 
 
     public void drink(double waterWeight) {
         if (isHibernating()) {
             throw new BearHibernatingException();
         }
-        this.currentWeight += 0.75 * waterWeight;
+        if (isAlive()) {
+            this.currentWeight += 0.75 * waterWeight;
+        }
     }
 
     public void poop() {
         this.currentWeight *= 0.95;
     }
+
     @Override
     public double getBirthWeight() {
         return birthWeight;
